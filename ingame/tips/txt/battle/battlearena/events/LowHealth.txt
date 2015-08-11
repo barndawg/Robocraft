@@ -1,0 +1,1 @@
+You are on low health. If there are no medics around, and you can't return to your Shield, you may want to respawn.

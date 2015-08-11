@@ -1,0 +1,1 @@
+To place a "Team Order" on the map, press Ctrl, and click on the point in the minimap where you want to place the order. Drag to which order you would like to place.

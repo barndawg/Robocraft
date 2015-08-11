@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <link rel="stylesheet" href="assets/css/stylesheet.css" />
+        <title>Robocraft</title>
+    </head>
+
+    <body>
+        <div style="width:20px; height:20px; bottom:0; right:0; position:absolute;" onmousedown="dragResize('BottomRight');">
+            
+        </div>
+        <div id="content" class="toprightcorner" onmousedown="dragMove();">
+            <img src="assets/images/Robocraft.png" class="semitransparent" width="50" height="50" id="robocraftLogo" />
+        </div>
+        <script>
+            function dragResize(edge){
+                overwolf.windows.getCurrentWindow(function(result){
+                    if (result.status=="success"){
+                        overwolf.windows.dragResize(result.window.id, edge);
+                    }
+                });
+            }
+            
+            function dragMove(){
+                overwolf.windows.getCurrentWindow(function(result){
+                    if (result.status=="success"){
+                        overwolf.windows.dragMove(result.window.id);
+                    }
+                });
+            }
+            
+            function closeWindow(){
+                overwolf.windows.getCurrentWindow(function(result){
+                    if (result.status=="success"){
+                        overwolf.windows.close(result.window.id);
+                    }
+                });
+            }
+
+            function clickHandler(e) {
+                closeWindow();
+                // do other stuff
+            }
+            document.getElementById('robocraftLogo').addEventListener('click', clickHandler);
+        </script>
+    </body>
+</html>
