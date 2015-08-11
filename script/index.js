@@ -1,5 +1,3 @@
-// TODO: see if you can figure out how to get this onto github. Tortoise is a good, free client
-
 function closeWindow() {
     console.log("Closing window...");
     overwolf.windows.getCurrentWindow(function (result) {
@@ -27,7 +25,7 @@ function gameInfoHandler(result){
         console.log(result.title);
         var gamesRunning = (result.title);
         if (gamesRunning === "Robocraft") {
-            //start Robocraft stuff
+            window.location = "ingame/tips/tips.html";
             alert("Robocraft is running!");
         } else {
             gameNotRunning();
@@ -37,8 +35,6 @@ function gameInfoHandler(result){
     }
 }
 
-// A nice pattern for you - IIFE (immediately invoked function expression)
-// Put all your initialisation code in here so it's all nicely corralled.
 (function init() {
 
     // Set up listeners

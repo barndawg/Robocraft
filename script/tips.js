@@ -10,8 +10,6 @@ function gamemodeHandler(result) {
     }
 }
 
-// A nice pattern for you - IIFE (immediately invoked function expression)
-// Put all your initialisation code in here so it's all nicely corralled.
 (function init() {
 
     // Set up listeners
