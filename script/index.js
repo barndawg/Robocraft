@@ -36,6 +36,13 @@ function gameInfoHandler(result){
 }
 
 (function init() {
+    // Position window
+    overwolf.windows.getCurrentWindow(function(result){
+        if (result.status=="success"){
+            var xPosStart = screen.width - 55;
+            overwolf.windows.changePosition(result.window.id, xPosStart, -10);
+        }
+    });
 
     // Set up listeners
     document.getElementById('robocraftLogo').addEventListener('click', clickHandler);
