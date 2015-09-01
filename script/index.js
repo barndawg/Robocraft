@@ -37,7 +37,7 @@ function gameInfoHandler(result){
 }
 
 (function init() {
-    console.log("Welcome to the Robocraft tips app by barndawg!");
+    console.log("Welcome to the Robocraft tips app, by barndawg!");
 
     // Position window
     overwolf.windows.getCurrentWindow(function(result){
