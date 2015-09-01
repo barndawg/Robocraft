@@ -17,6 +17,7 @@ function clickHandler(e) {
 }
 function gameNotRunning() {
     alert("Robocraft isn't running. To use this app, start Robocraft.");
+    console.log("Robocraft isn't running.");
     //closeWindow();
 }
 function gameInfoHandler(result){
@@ -36,15 +37,20 @@ function gameInfoHandler(result){
 }
 
 (function init() {
+    console.log("Welcome to the Robocraft tips app by barndawg!");
+
     // Position window
     overwolf.windows.getCurrentWindow(function(result){
         if (result.status=="success"){
             var xPosStart = screen.width - 55;
+            console.log("Screen size: " + screen.width + " * " + screen.height);
+            console.log("Starting x position: " + xPosStart);
             overwolf.windows.changePosition(result.window.id, xPosStart, -10);
         }
     });
 
     // Set up listeners
+    console.log("Adding an event listener to the logo...");
     document.getElementById('robocraftLogo').addEventListener('click', clickHandler);
 
     // Get game info.
