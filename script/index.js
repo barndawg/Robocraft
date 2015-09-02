@@ -26,8 +26,15 @@ function gameInfoHandler(result){
         console.log(result.title);
         var gamesRunning = (result.title);
         if (gamesRunning === "Robocraft") {
-            window.location = "ingame/tips/tips.html";
-            alert("Robocraft is running!");
+            overwolf.windows.obtainDeclaredWindow("TipsWindow",
+                function(result){
+                    if (result.status == "success"){
+                        overwolf.windows.restore(result.window.id,
+                            function(result){}
+                        );
+                    }
+                }
+            );
         } else {
             gameNotRunning();
         }
