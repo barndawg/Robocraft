@@ -1,10 +1,10 @@
 {
-    "manifest_version": 1.1,
+    "manifest_version": 1.0,
     "type": "WebApp",
     "permissions": ["GameInfo"],
     "meta": {
         "name": "Robocraft",
-        "version": "0.1.11.1",
+        "version": "0.2",
         "minimum-overwolf-version":"0.77.10",
         "author": "barndawg",
         "icon": "assets/images/Robocraft.png",

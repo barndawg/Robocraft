@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: 'magistralcregular';
-    src: url('magistralbold-webfont.eot');
-    src: url('magistralbold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('magistralbold-webfont.woff2') format('woff2'),
-         url('magistralbold-webfont.woff') format('woff'),
-         url('magistralbold-webfont.ttf') format('truetype'),
-         url('magistralbold-webfont.svg#magistralcregular') format('svg');
+    src: url('/assets/fonts/magistral/magistralbold-webfont.eot');
+    src: url('/assets/fonts/magistral/magistralbold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/magistral/magistralbold-webfont.woff2') format('woff2'),
+         url('/assets/fonts/magistral/magistralbold-webfont.woff') format('woff'),
+         url('/assets/fonts/magistral/magistralbold-webfont.ttf') format('truetype'),
+         url('/assets/fonts/magistral/magistralbold-webfont.svg#magistralcregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
