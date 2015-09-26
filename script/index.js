@@ -16,7 +16,7 @@ function clickHandler(e) {
     }
 }
 function gameNotRunning() {
-    alert("Robocraft isn't running. To use this app, start Robocraft.");
+    alert("Please start Robocraft to use this app!");
     console.log("Robocraft isn't running.");
     //closeWindow();
 }
@@ -35,12 +35,16 @@ function gameInfoHandler(result){
     }
 }
 function openWindow(windowName){
+    console.log("Attempting to open window with name: " + windowName);
     overwolf.windows.obtainDeclaredWindow(windowName,
         function(result){
             if (result.status == "success"){
+                console.log("Window exists. Opening...");
                 overwolf.windows.restore(result.window.id,
                     function(result){}
                 );
+            } else {
+                console.log("Window " + windowName + " doesn't seem to exist");
             }
         }
     );
