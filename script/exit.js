@@ -43,6 +43,7 @@ function closeWindow(windowName) {
         }
 
     // Add event listeners to buttons
+    console.log("Adding event listeners....");
     document.getElementById("exitYes").addEventListener("click", exitYes);
     document.getElementById("exitNo").addEventListener("click", exitNo);
 
