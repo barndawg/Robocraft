@@ -1,16 +1,18 @@
 function exitYes() {
+    console.log("exitYes called.");
     closeWindow("MainWindow");
 }
 
 function exitNo() {
-    closeWindow("ExitWindow")
+    console.log("exitNo called.");
+    closeWindow("ExitWindow");
 }
 
 function closeWindow(windowName) {
     overwolf.windows.obtainDeclaredWindow(windowName,
         function(result){
             if (result.status == "success"){
-                console.log("Closing window...")
+                console.log("Closing window...");
                 overwolf.windows.close(result.window.id);
             } else {
                 console.log("Window " + windowName + " doesn't seem to exist");
@@ -31,12 +33,19 @@ function closeWindow(windowName) {
     // Position window
     overwolf.windows.getCurrentWindow(function(result){
         if (result.status=="success"){
-            var xPosStart = screen.width / 2;
-            var yPosStart = screen.height / 2;
+            var winWidth = window.innerWidth / 2;
+            var winHeight = window.innerHeight / 2;
+            var xPosStart = screen.width / 2 - winWidth;
+            var yPosStart = screen.height / 2 - winHeight;
             console.log("Screen size: " + screen.width + " * " + screen.height);
             console.log("Starting x + y position: " + xPosStart + ", " + yPosStart);
             overwolf.windows.changePosition(result.window.id, xPosStart, yPosStart);
         }
+
+    // Add event listeners to buttons
+    document.getElementById("exitYes").addEventListener("click", exitYes);
+    document.getElementById("exitNo").addEventListener("click", exitNo);
+
     });
 
-})();
+}) ();
