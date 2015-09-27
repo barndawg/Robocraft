@@ -17,6 +17,10 @@ body {
     font-family:'magistralcregular';
 }
 
+.button {
+    font-family:'magistralcregular';
+}
+
 .semiTransparent {
-    opacity: .8;
+    opacity: .9;
 }

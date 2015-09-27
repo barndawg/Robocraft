@@ -8,12 +8,8 @@ function closeWindow() {
 }
 
 function clickHandler(e) {
-    var exit = confirm("Are you sure you want to exit?");
-    console.log("Exit = ", exit);
-    if (exit) {
-        closeWindow();
-        console.log("Executed closeWindow()");
-    }
+    openWindow("ExitWindow");
+    console.log("Opened exit prompt.");
 }
 function gameNotRunning() {
     alert("Please start Robocraft to use this app!");

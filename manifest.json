@@ -1,10 +1,10 @@
 {
-    "manifest_version": 1.0,
+    "manifest_version": 1.2,
     "type": "WebApp",
     "permissions": ["GameInfo"],
     "meta": {
         "name": "Robocraft",
-        "version": "0.2",
+        "version": "0.3.2",
         "minimum-overwolf-version":"0.77.10",
         "author": "barndawg",
         "icon": "assets/images/Robocraft.png",
@@ -22,9 +22,15 @@
                 "min_size": {"width": 100, "height": 100},
                 "max_size": {"width": 100, "height": 100}
             },
+            "ExitWindow": {
+                "file": "exit.html",
+                "transparent": false,
+                "resizable": true,
+                "size": {"width": 270, "height": 115},
+            },
             "TipsWindow": {
                 "file": "ingame/tips/tips.html",
-                "transparent": true,
+                "transparent": false,
                 "resizable": false,
                 "size": {"width": 500, "height": 100},
             }
