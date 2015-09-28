@@ -17,25 +17,17 @@ body {
     font-family:'magistralcregular';
 }
 
+br {
+   display: block;
+   margin: 0px 0;
+}
+
 .button {
     font-family:'magistralcregular';
 }
 
-.button.fullWidth {
-    display: block;
-    width: 100%;
-}
-
-.whiteBackground {
-    background-color: #FFFFFF;
-}
-
-.whiteBackground.semiTrans {
-    opacity: .9;
-}
-
-.whiteBackground.centreText {
-    text-align: center;
+.noSpacing {
+    float: left;
 }
 
 .semiTransparent {
