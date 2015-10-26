@@ -28,6 +28,7 @@ function closeWindow(windowName) {
 }
 
 (function init() {
+
     console.log("Exit window opened...");
 
     // Position window
@@ -41,12 +42,8 @@ function closeWindow(windowName) {
             console.log("Starting x + y position: " + xPosStart + ", " + yPosStart);
             overwolf.windows.changePosition(result.window.id, xPosStart, yPosStart);
         }
-
+    });
     // Add event listeners to buttons
     console.log("Adding event listeners....");
     document.getElementById("exitYes").addEventListener("click", exitYes);
-    document.getElementById("exitNo").addEventListener("click", exitNo);
-
-    });
-
-}) ();
+    document.getElementById("exitNo").addEventListener("click", exitNo); }) ();
