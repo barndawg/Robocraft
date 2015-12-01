@@ -1,23 +1,56 @@
-function gamemodeHandler(result) {
-    console.log("gamemodeHandler called.");
-    if (result) {
-        gameMode = result.gameMode;
-        console.log("In a battle: ", result.gameMode, "on map: ", result.mapKey);
-        window.location = "ingame/tips/battle/battle.html";
-    } else {
-        console.log("In build mode.");
-        window.location = "ingame/tips/build.html";
-    }
+function changeTipsText(text) {
+  var tipsText = document.getElementById('tipsText');
+  tipsText.innerHTML = text;
 }
 
-function battleModeHandler() {
-    console.log("battleModeHandler called.");
-    if (gameMode === "Battle Arena") {
-        // Launch Battle Mode tips.
+function onInfoUpdatesHandler(result) {
+  console.log('onInfoUpdates', result);
+  var obj;
+  if (!battleMode) {
+    obj = getInfoObject(result.info, 'usernameListMyTeam');
+    if (obj) {
+      battleMode = 1;
+      console.clear();
+      console.log('Battle mode stuff starts here...');
+      changeTipsText('In battle mode');
     }
+  }
+  if (!username) {
+    obj = getInfoObject(result.info, 'username');
+    if (obj) {
+      username = obj.value;
+      changeTipsText('Welcome back, ' + username + '!');
+      console.log('username = ', username);
+    }
+  }
+}
+
+function getInfoObject(info, key) {
+  for (var i = 0, obj; i < info.length; i ++) {
+    obj = info[i];
+    if (obj.key === key) {
+      return obj;
+    } else if (obj.name === key) {
+      return obj;
+    }
+  }
+  return;
 }
 
 (function init() {
+    changeTipsText('Welcome back!');
     // Get gamemode (build / battle)
-    overwolf.games.Robocraft.gameData(gamemodeHandler);
+    // overwolf.games.Robocraft.gameData(gamemodeHandler);
+    overwolf.games.events.onInfoUpdates.addListener(onInfoUpdatesHandler);
+
+    overwolf.games.events.onNewEvents.addListener(function(result) {
+      console.log('onNewEvents', result);
+    });
+
+    overwolf.games.events.onError.addListener(function(result) {
+      console.log('onError', result);
+    });
 })();
+
+var username;
+var battleMode;
