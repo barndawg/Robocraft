@@ -1,5 +1,5 @@
 function closeWindow() {
-    console.log('Closing window...');
+    console.log('Closing current window...');
     overwolf.windows.getCurrentWindow(function (result) {
         if (result.status === 'success') {
             overwolf.windows.close(result.window.id);
@@ -35,9 +35,9 @@ function clickHandler(e) {
       });
   }
 function gameNotRunning() {
-    alert('Please start Robocraft to use this app!');
+    alert('Please start Robocraft so this app will function!');
     console.log('Robocraft isn\'t running.');
-    //closeWindow();
+    closeWindow();
 }
 function gameInfoHandler(result){
     console.log('gameInfoHandler called.');
@@ -63,14 +63,14 @@ function openWindow(windowName){
                     function(result){}
                 );
             } else {
-                console.log('Window ' + windowName + ' doesn\'t seem to exist');
+                console.log('Window ' + windowName + ' doesn\'t exist');
             }
         }
     );
 }
 
 function init() {
-    console.log('Welcome to the Robocraft tips app, by barndawg!');
+    console.log('Welcome to the RoboCraft tips app, by barndawg!');
 
     // Position window
     overwolf.windows.getCurrentWindow(function(result){

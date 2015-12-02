@@ -12,7 +12,7 @@ function onInfoUpdatesHandler(result) {
       battleMode = 1;
       console.clear();
       console.log('Battle mode stuff starts here...');
-      changeTipsText('In battle mode');
+      changeTipsText('Welcome to Battle Mode!');
     }
   }
   if (!username) {
@@ -40,7 +40,6 @@ function getInfoObject(info, key) {
 (function init() {
     changeTipsText('Welcome back!');
     // Get gamemode (build / battle)
-    // overwolf.games.Robocraft.gameData(gamemodeHandler);
     overwolf.games.events.onInfoUpdates.addListener(onInfoUpdatesHandler);
 
     overwolf.games.events.onNewEvents.addListener(function(result) {

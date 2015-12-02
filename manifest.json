@@ -22,14 +22,8 @@
                 "min_size": {"width": 100, "height": 100},
                 "max_size": {"width": 100, "height": 100}
             },
-            "ExitWindow": {
-                "file": "exit.html",
-                "transparent": true,
-                "resizable": false,
-                "size": {"width": 270, "height": 115},
-            },
             "TipsWindow": {
-                "file": "ingame/tips/tips.html",
+                "file": "tips/tips.html",
                 "transparent": false,
                 "resizable": false,
                 "size": {"width": 500, "height": 100},
