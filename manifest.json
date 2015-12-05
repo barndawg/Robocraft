@@ -4,7 +4,7 @@
     "permissions": ["GameInfo"],
     "meta": {
         "name": "Robocraft",
-        "version": "0.4.7",
+        "version": "0.6.1",
         "minimum-overwolf-version":"0.77.10",
         "author": "barndawg",
         "icon": "assets/images/Robocraft.png",

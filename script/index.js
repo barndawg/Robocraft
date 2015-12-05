@@ -37,7 +37,6 @@ function clickHandler(e) {
 function gameNotRunning() {
     alert('Please start Robocraft so this app will function!');
     console.log('Robocraft isn\'t running.');
-    closeWindow();
 }
 function gameInfoHandler(result){
     console.log('gameInfoHandler called.');
