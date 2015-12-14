@@ -23,7 +23,19 @@ br {
 }
 
 .whiteBackground {
-  background-color: white
+  background-color: white;
+}
+
+.orangeBackground {
+  background-color: #EE7600;
+}
+
+.whiteText {
+  color: white;
+}
+
+.centralAlign {
+  text-align: center;
 }
 
 .button {
@@ -34,6 +46,10 @@ br {
     float: left;
 }
 
-.semiTransparent {
+.75Opacity {
     opacity: .75;
+}
+
+.85Opacity {
+  opacity: .85;
 }

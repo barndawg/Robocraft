@@ -1,16 +1,4 @@
-function closeWindow() {
-    console.log('Closing current window...');
-    overwolf.windows.getCurrentWindow(function (result) {
-        if (result.status === 'success') {
-            overwolf.windows.close(result.window.id);
-        }
-    });
-}
-
 function clickHandler(e) {
-    // The following window doesn't work too well, so for now I'll just use a confirm.
-    //openWindow('ExitWindow');
-    //console.log('Opened exit prompt.');
     var exit = confirm('Are you sure you want to exit?');
     if (exit){
       closeWindow('MainWindow');
@@ -35,7 +23,7 @@ function clickHandler(e) {
       });
   }
 function gameNotRunning() {
-    alert('Please start Robocraft so this app will function!');
+    alert('Please start Robocraft to use this app!');
     console.log('Robocraft isn\'t running.');
     closeWindow('MainWindow');
 }
@@ -73,11 +61,18 @@ function init() {
     console.log('Welcome to the RoboCraft tips app, by barndawg!');
 
     // Position window
+    // overwolf.windows.getCurrentWindow(function(result){
+    //     if (result.status=='success'){
+    //         var xPosStart = screen.width - 55;
+    //         overwolf.windows.changePosition(result.window.id, xPosStart, -10);
+    //     }
+    // });
+
     overwolf.windows.getCurrentWindow(function(result){
-        if (result.status=='success'){
-            var xPosStart = screen.width - 55;
-            overwolf.windows.changePosition(result.window.id, xPosStart, -10);
-        }
+      if (result.status=='success'){
+        var xPosStart = screen.width - 85;
+        overwolf.windows.changePosition(result.window.id, xPosStart, -15);
+      }
     });
 
     // Set up listeners
