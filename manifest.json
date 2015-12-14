@@ -24,7 +24,7 @@
             },
             "TipsWindow": {
                 "file": "tips/tips.html",
-                "transparent": false,
+                "transparent": true,
                 "resizable": false,
                 "size": {"width": 500, "height": 100},
             }

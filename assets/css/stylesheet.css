@@ -22,6 +22,10 @@ br {
    margin: 0px 0;
 }
 
+.whiteBackground {
+  background-color: white
+}
+
 .button {
     font-family:'magistralcregular';
 }
@@ -31,5 +35,5 @@ br {
 }
 
 .semiTransparent {
-    opacity: .9;
+    opacity: .75;
 }
