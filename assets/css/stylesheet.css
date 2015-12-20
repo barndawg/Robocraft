@@ -46,10 +46,10 @@ br {
     float: left;
 }
 
-.75Opacity {
+.semitransparent {
     opacity: .75;
 }
 
-.85Opacity {
-  opacity: .85;
+.mostlyopaque {
+  opacity: .9;
 }

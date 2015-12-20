@@ -1,4 +1,5 @@
 function clickHandler(e) {
+  positionWindow();
     var exit = confirm('Are you sure you want to exit?');
     if (exit){
       closeWindow('MainWindow');
@@ -57,23 +58,17 @@ function openWindow(windowName){
     );
 }
 
+function positionWindow() {
+  overwolf.windows.getCurrentWindow(function(result){
+    if (result.status=='success'){
+      var xPosStart = screen.width - 85;
+      overwolf.windows.changePosition(result.window.id, xPosStart, -15);
+    }
+  });
+}
+
 function init() {
     console.log('Welcome to the RoboCraft tips app, by barndawg!');
-
-    // Position window
-    // overwolf.windows.getCurrentWindow(function(result){
-    //     if (result.status=='success'){
-    //         var xPosStart = screen.width - 55;
-    //         overwolf.windows.changePosition(result.window.id, xPosStart, -10);
-    //     }
-    // });
-
-    overwolf.windows.getCurrentWindow(function(result){
-      if (result.status=='success'){
-        var xPosStart = screen.width - 85;
-        overwolf.windows.changePosition(result.window.id, xPosStart, -15);
-      }
-    });
 
     // Set up listeners
     console.log('Adding an event listener to the logo...');
@@ -81,6 +76,10 @@ function init() {
 
     // Get game info.
     overwolf.games.getRunningGameInfo(gameInfoHandler);
+
+    // Start timed positioning loop, position window
+    setInterval(positionWindow, 1000);
+    positionWindow();
 }
 
 init();

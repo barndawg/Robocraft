@@ -8,12 +8,27 @@ function changeTipsText(text) {
 function onInfoUpdatesHandler(result) {
   //console.log('onInfoUpdatesHandler:', result);
   var obj;
+  if (!battleMode) {
+    obj = getInfoObject(result.info, 'usernameListMyTeam');
+    if (obj) {
+        battleMode = true;
+        changeTipsText('Welcome to Battle Mode!');
+      }
+  } else {
+    obj = getInfoObject(result.info, 'softCurrency');
+    if (obj) {
+      battleMode = false;
+      var message = 'Back in the Mothership!';
+      changeTipsText(message);
+    }
+  }
   if (!username) {
     obj = getInfoObject(result.info, 'username');
     if (obj) {
       username = obj.value;
       changeTipsText('Welcome back, ' + username + '!');
       console.log('username = ', username);
+      localStorage.setItem('RCTipsApp-Username', username);
     }
   }
 }
@@ -45,30 +60,57 @@ function gameWonHandler(data){
   changeTipsText(data);
 }
 
-(function init() {
-    // Change tips text
-    changeTipsText('Welcome to Robocraft!');
+function miscTips() {
+  var randTip;
+  if (battleMode) {
+    randTip = Math.floor(Math.random() * miscBattleTips.length);
+    changeTipsText(miscBattleTips[randTip]);
+  } else {
+    randTip = Math.floor(Math.random() * miscBuildTips.length);
+    changeTipsText(miscBuildTips[randTip]);
+  }
+}
 
-    // Position window
-    overwolf.windows.getCurrentWindow(function(result){
-        if (result.status=='success'){
-            overwolf.windows.changePosition(result.window.id, -15, -25);
-        }
-    });
+function positionWindow() {
+  overwolf.windows.getCurrentWindow(function(result){
+      if (result.status=='success'){
+          overwolf.windows.changePosition(result.window.id, -15, -25);
+      }
+  });
+}
+
+function init() {
+
+    // Change tips text
+    prevUsername = localStorage.getItem('RCTipsApp-Username');
+    if (prevUsername) {
+      var welcomeMessage = 'Welcome back, ' + prevUsername + '!';
+      changeTipsText(welcomeMessage);
+    } else {
+      changeTipsText('Welcome back to Robocraft!');
+    }
+
+    // Start timed positioning loop, position window
+    setInterval(positionWindow, 1000);
+    positionWindow();
 
     // Add listeners
     overwolf.games.events.onInfoUpdates.addListener(onInfoUpdatesHandler);
     overwolf.games.events.onNewEvents.addListener(onNewEventsHandler);
-})();
+    document.getElementById('tipsText').addEventListener('click', positionWindow);
+
+    // Start miscellanious tips loop, set interval of 15 seconds for the function
+    setInterval(miscTips, 15000);
+    miscTips();
+}
 
 // Set variables: username var + tips
 var username, battleMode;
+
 var tips = {
-  // Misc. event-based tips
   'game_won': 'Good job! Another victory for E-14!',
   'game_lost': 'You\'ve lost this one, but on to victory next time!',
   'being_spotted': 'You have been spotted, so you are visible to enemies from their minimap.',
-  'player_killed': 'Ouch! Looks like that hurt...',
   'start_getting_healed': 'You are now being healed. Remember to, if you can, protect your medic.',
   'player_near_death': 'You are near death - you should find a medic, or return to your base.',
   'my_base_being_captured': 'Your base is under attack! You may want to return to defend it.',
@@ -80,3 +122,46 @@ var tips = {
   'you_become_leader': 'You are now the leader! You appear as \'on fire\' to enemies, and you may be a large target.',
   'player_defending_base': 'A team-mate is defending your base. You may want to help them stop the attackers.'
 };
+
+var miscBuildTips = [
+  // Lots of these were taken from http://robocraft.gamepedia.com/Design_Strategy
+  'Don\'t connect important parts of your robot only by thin \'sticks\'.',
+  'A good robot should have 6 or more weapons.',
+  'Armor the areas around important functional components like guns.',
+  'Press the middle mouse button to select a block from your robot.',
+  'Electroplates are a great way to add additional armor points to a build.',
+  'Armored Cubes have a greater amount of armor per CPU than Electroplates',
+  'You are going to take damage. Build with this in mind.',
+  'Whenever possible, regardless of armor strategy, place your hardware and special cubes as far away from each other as possible.',
+  'Each weapon has strengths and weaknesses, none are overpowered or weak by nature.',
+  'Press [M] to activate \'Mirror Mode\'.',
+  'You can charge up to 6 rails, and fire up to 6 plasma cannons at once.',
+  'The fire rate of SMGs does not increase after 6 guns are on your robot.',
+  'Build stable & compact!',
+  'The bigger your robot, the bigger a target it will be in a battle.',
+  'Tank treads are excellent for making large, well-armored battle tanks',
+  'Rotors give stable flight at any height!',
+  'You can stack multiple Radar Jammers together for additional strength',
+  'When buying cubes from the store, you can hold down [CTRL] to choose 10 blocks at a time for fast purchasing.',
+  'Thrusters should be placed at the same level as your center of mass.',
+  'Wheels carry a lot of load more easily while hoverblades offer higher mobility.',
+  'Each weapon requires a different way of aiming.',
+  'Test your vehicle when you make changes to it!',
+  'Press [ and ] to move the line of symmetry.'
+];
+
+var miscBattleTips = [
+  'Press \'F\' to flip your robot over if it is upside-down or stuck.',
+  'To place a \'ping\' on the map, hold [CTRL] and click on the point you want to ping on the minimap.',
+  'When attacking an enemy, try to aim for their weapons so you have a better chance of killing them.',
+  'If you \'bust fire\' an SMG, your accuracy will be much higher.',
+  'When an enemy is in your crosshairs, press [Q] to spot them.',
+  'Don\'t go solo. Stay with the team, and don\'t go for a \'suicide rush\' - it doesn\'t help anyone.',
+  'In battle arena, you can destroy Protonium crystals more quickly by aiming for the connection points.',
+  'When you kill someone in The Pit, you will be brought back to full health.',
+  'The leader in The Pit is displayed as \'on fire\'.',
+  'On the ice maps, stay off the ice unless you are a hover! You will lose control of your robot.',
+  'Most hovercraft can scale hills if you move forward slowly without deviation and continue to hold your lift key.'
+];
+
+init();

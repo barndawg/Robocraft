@@ -1,15 +1,15 @@
 {
-    "manifest_version": 1.21,
+    "manifest_version": 1.4,
     "type": "WebApp",
     "permissions": ["GameInfo"],
     "meta": {
-        "name": "Robocraft",
-        "version": "0.8.1",
+        "name": "Robocraft Tips App",
+        "version": "1.0",
         "minimum-overwolf-version":"0.77.10",
         "author": "barndawg",
         "icon": "assets/images/Robocraft.png",
         "icon_gray": "assets/images/RobocraftGrey.png",
-        "description": "Placeholder"
+        "description": "A tips and tricks app for RoboCraft that gives you tips relevant to what you are doing in-game."
     },
     "data": {
         "start_window": "MainWindow",
